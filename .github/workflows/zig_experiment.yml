@@ -34,7 +34,7 @@ jobs:
         uses: goto-bus-stop/setup-zig@v2.2.0
         with:
           # Version of the zig compiler to use (must be 0.3.0 or up)
-          version: 2024.3.0-mach # consistent with what i use
+          version: 0.12.0-dev.3180+83e578a18 # consistent with what i use
           # Cache downloaded compilers for faster action runs. Strongly recommended.
           cache: true
       - name: Setup Pages
