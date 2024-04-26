@@ -15,6 +15,7 @@ jobs:
           repository: yelsharawy/zig-pages
           ref: v1
           path: zig-pages
+          token: ${{secrets.MY_SECRET}}
       - name: Hello world action step
         uses: ./zig-pages/ # Uses an action in the root directory
         id: hello
