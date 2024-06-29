@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>moo moo cow</title>
+    <style>
+      #cow {
+        /* margin: 10px auto 2px; */
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        margin:auto;
+        transition: all .2s ease-in-out;
+        transform: rotate(0deg);
+      }
+      #cow:hover {
+        cursor: pointer;
+        transform: scale(1.1); 
+      }
+      #cow:active {
+        transition: all .05s ease-in-out; 
+        transform: rotate(-10deg) scale(0.9);
+      }
+    </style>
+    <script>
+      var state = 0;
+      
+      function mousedown(event) {
+        let moo = document.getElementById("moo");
+        let moo2 = moo.cloneNode();
+        moo2.addEventListener("ended", (event) => { moo2.remove(); })
+        moo2.play();
+      }
+      
+      function click(event) {
+        let cow = document.getElementById("cow");
+        switch (state) {
+          case 0:
+          case 1:
+          case 2:
+          case 3:
+          case 4:
+            cow.animate([
+              { transform: "rotate(-10deg) scale(0.9)" },
+              { transform: "rotate(360deg)", easing: "ease-in" }
+            ], 500);
+            
+            state += 1;
+            break;
+          default:
+            // document.getElementById("messages").innerText += "Invalid state: \"" + state + "\"\n";
+        }
+        
+      }
+      addEventListener("load", (event) => {
+        document.getElementById("cow").addEventListener("mousedown", mousedown);
+        document.getElementById("cow").addEventListener("click", click);
+      });
+    </script>
+  </head>
+  <body>
+    <audio id="moo" src="moo.mp3" preload="auto"></audio>
+    <img id="cow" src="cow.png"/>
+    <pre id="messages"></pre>
+  </body>
+</html>
