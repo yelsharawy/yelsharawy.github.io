@@ -43,11 +43,11 @@ jobs:
       # for now, try getting zig version
       # - name: Print zig version
       #   run: zig version
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v3
-      #   with:
-      #     # Upload static folder
-      #     path: 'static'
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload static folder
+          path: 'static'
               
   # Deployment job
   deploy:
