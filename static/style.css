@@ -8,3 +8,26 @@ div.content {
     width: min(1000px, 100% - 50px);
     margin: 0 auto;
 }
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+thead td {
+    background-color: lightgray;
+    /* color: white; */
+    font-weight: bold;
+    border: 2px solid black;
+}
+tr:nth-child(even) {
+    background-color: azure;
+}
+td {
+    padding: 1px 7px;
+    border: 1px solid gray;
+}
+
+.highlight {
+    background-color: yellow;
+}
