@@ -14,7 +14,6 @@
       for (let cell of cells) {
         let from = thisWeek + cell.getAttribute("data-from") * 3600_000;
         let to = thisWeek + cell.getAttribute("data-to") * 3600_000;
-        console.log(new Date(from), new Date(to));
         if (
              from <= now && now <= to
           || from + 3600_000 * 24 * 7 <= now
@@ -25,9 +24,9 @@
         }
       }
       
-      setTimeout(highlightCurrent, 60000);
+      setTimeout(highlightCurrent, 60_000 - (now.getTime() % 60_000));
     }
-    addEventListener("load", highlightCurrent);
+    addEventListener("DOMContentLoaded", highlightCurrent);
   </script>
 </head>
 
