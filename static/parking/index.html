@@ -29,18 +29,6 @@
       setTimeout(highlightCurrent, 60_000 - (now.getTime() % 60_000));
     }
     
-    function notify() {
-      let promise = Notification.requestPermission();
-      promise.then((permission) => {
-        console.log(permission);
-        switch (permission) {
-          case "granted":
-            new Notification("Test notification", { body: "success!" });
-            break;
-        }
-      });
-    }
-    
     function log(x) {
       console.log(x);
       document.getElementById("output").append(x + '\n');
@@ -52,6 +40,21 @@
       span.classList.add("error");
       span.append(x + '\n');
       document.getElementById("output").append(span);
+    }
+    
+    function notify() {
+      // let promise = Notification.requestPermission();
+      // promise.then((permission) => {
+      //   console.log(permission);
+      //   switch (permission) {
+      //     case "granted":
+      //       new Notification("Test notification", { body: "success!" });
+      //       break;
+      //   }
+      // });
+      log("Will try regular notification")
+      new Notification("Test notification", { body: "success!" });
+      log("Tried regular notification")
     }
     
     const registerServiceWorker = async () => {
@@ -68,13 +71,15 @@
             log("Service worker active");
           }
           
-          const permission = Notification.permission;
-          log(permission);
-          if (permission == "granted") {
-            registration.showNotification("Service notification", { body: "success!" });
-          } else {
-            error("Permission to show notifcations not granted");
-          }
+          // const permission = Notification.permission;
+          // log(permission);
+          // if (permission == "granted") {
+          log("Will try service notificiation");
+          registration.showNotification("Service notification", { body: "success!" });
+          log("Tried service notificiation");
+          // } else {
+          //   error("Permission to show notifcations not granted");
+          // }
         } catch (error) {
           error(`Registration failed with ${error}`);
         }
