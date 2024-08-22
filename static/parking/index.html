@@ -52,9 +52,16 @@
       //       break;
       //   }
       // });
-      log("Will try regular notification")
-      new Notification("Test notification", { body: "success!" });
-      log("Tried regular notification")
+      try {
+        log("Will try service notificiation");
+        swRegistration.showNotification("Service notification", { body: "success!" });
+        log("Tried service notificiation");
+      } catch (e) {
+        error(`Notification failed with ${e}`);
+      }
+      // log("Will try regular notification")
+      // new Notification("Test notification", { body: "success!" });
+      // log("Tried regular notification")
     }
     
     const registerServiceWorker = async () => {
@@ -70,26 +77,19 @@
           } else if (registration.active) {
             log("Service worker active");
           }
-          
-          // const permission = Notification.permission;
-          // log(permission);
-          // if (permission == "granted") {
-          log("Will try service notificiation");
-          registration.showNotification("Service notification", { body: "success!" });
-          log("Tried service notificiation");
-          // } else {
-          //   error("Permission to show notifcations not granted");
-          // }
-        } catch (error) {
-          error(`Registration failed with ${error}`);
+          return registration;
+        } catch (e) {
+          error(`Registration failed with ${e}`);
         }
       } else {
         error("Service workers are not available");
       }
+      return null;
     };
     
     function loaded() {
-      registerServiceWorker();
+      // global
+      swRegistration = registerServiceWorker();
       document.getElementById("notify").addEventListener("click", notify);
       highlightCurrent();
     }
