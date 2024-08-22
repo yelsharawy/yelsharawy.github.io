@@ -8,9 +8,10 @@
     function highlightCurrent() {
       let cells = document.querySelectorAll("#timetable tbody td");
       let now = new Date();
-      let thisWeek = new Date()
-        .setDate(now.getDate() - now.getDay())
-      thisWeek -= thisWeek % (3600_000 * 24) - now.getTimezoneOffset() * 60_000;
+      let thisWeek = new Date();
+      thisWeek.setDate(thisWeek.getDate() - thisWeek.getDay());
+      thisWeek.setHours(0,0,0,0,0);
+      thisWeek = thisWeek.getTime(); // convert to number (epoch millis)
       for (let cell of cells) {
         let from = thisWeek + cell.getAttribute("data-from") * 3600_000;
         let to = thisWeek + cell.getAttribute("data-to") * 3600_000;
