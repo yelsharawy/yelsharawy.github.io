@@ -42,7 +42,7 @@
       document.getElementById("output").append(span);
     }
     
-    function notify() {
+    async function notify() {
       // let promise = Notification.requestPermission();
       // promise.then((permission) => {
       //   console.log(permission);
@@ -54,7 +54,9 @@
       // });
       try {
         log("Will try service notificiation");
-        swRegistration.showNotification("Service notification", { body: "success!" });
+        const registration = await navigator.serviceWorker.getRegistration();
+        log(`Got registration: ${registration}`);
+        registration.showNotification("Service notification", { body: "success!" });
         log("Tried service notificiation");
       } catch (e) {
         error(`Notification failed with ${e}`);
@@ -67,6 +69,9 @@
     const registerServiceWorker = async () => {
       if ("serviceWorker" in navigator) {
         try {
+          navigator.serviceWorker.addEventListener("message", (e) => {
+            log(e.data);
+          });
           const registration = await navigator.serviceWorker.register("sw.js", {
             scope: "/parking/",
           });
@@ -88,7 +93,7 @@
     };
     
     function loaded() {
-      registerServiceWorker().then((ret) => swRegistration = ret);
+      registerServiceWorker();
       document.getElementById("notify").addEventListener("click", notify);
       highlightCurrent();
     }
@@ -120,7 +125,7 @@
         </tr>
       </tbody>
     </table>
-    
+    Version: 0.0.1
     <button id="notify">Remind me to move the car</button>
     <pre id="output"></pre>
   </div>

@@ -1,18 +1,29 @@
+
+const messageAll = async (msg) => {
+    console.log(`attempting to send message: ${msg}`);
+    const clientList = await clients.matchAll({includeUncontrolled: true, type: "all"});
+    console.log(clientList);
+    for (const client of clientList) {
+        console.log(`sent message to ${client}`);
+        client.postMessage(msg);
+    }
+};
+console.log("Hello World!");
+messageAll("Hello World!");
+
 self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open('your - cache - name').then(cache => {
-            return cache.addAll([
-                '/style.css',
-                'index.html'
-            ]);
-        })
-    );
+    event.waitUntil(messageAll("install"));
 });
 
 self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request).then(response => {
-            return response || fetch(event.request);
-        })
-    );
+    event.waitUntil(messageAll("fetch"))
+    // event.respondWith(
+    //     caches.match(event.request).then(response => {
+    //         return response || fetch(event.request);
+    //     })
+    // );
+});
+
+self.addEventListener("activate", event => {
+    event.waitUntil(messageAll("activate"));
 });
