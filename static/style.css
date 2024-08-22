@@ -31,3 +31,6 @@ td {
 .highlight {
     background-color: yellow;
 }
+.error {
+    color: red;
+}

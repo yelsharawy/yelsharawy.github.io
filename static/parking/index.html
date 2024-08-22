@@ -40,12 +40,18 @@
       });
     }
     
-    function loaded() {
-      document.getElementById("notify").addEventListener("click", notify);
-      highlightCurrent();
+    function log(x) {
+      console.log(x);
+      document.getElementById("output").append(x + '\n');
     }
     
-    addEventListener("DOMContentLoaded", loaded);
+    function error(x) {
+      console.error(x);
+      const span = document.createElement("span");
+      span.classList.add("error");
+      span.append(x + '\n');
+      document.getElementById("output").append(span);
+    }
     
     const registerServiceWorker = async () => {
       if ("serviceWorker" in navigator) {
@@ -54,23 +60,35 @@
             scope: "/parking/",
           });
           if (registration.installing) {
-            console.log("Service worker installing");
+            log("Service worker installing");
           } else if (registration.waiting) {
-            console.log("Service worker installed");
+            log("Service worker installed");
           } else if (registration.active) {
-            console.log("Service worker active");
+            log("Service worker active");
+          }
+          
+          const permission = await Notification.requestPermission();
+          log(permission);
+          if (permission == "granted") {
+            registration.showNotification("Service notification", { body: "success!" });
+          } else {
+            error("Permission to show notifcations not granted");
           }
         } catch (error) {
-          console.error(`Registration failed with ${error}`);
+          error(`Registration failed with ${error}`);
         }
       } else {
-        console.error("Service workers are not available");
+        error("Service workers are not available");
       }
     };
-
-    // …
-
-    registerServiceWorker();
+    
+    function loaded() {
+      registerServiceWorker();
+      document.getElementById("notify").addEventListener("click", notify);
+      highlightCurrent();
+    }
+    
+    addEventListener("DOMContentLoaded", loaded);
   </script>
 </head>
 
@@ -99,6 +117,7 @@
     </table>
     
     <button id="notify">Remind me to move the car</button>
+    <pre id="output"></pre>
   </div>
 </body>
 </html>
