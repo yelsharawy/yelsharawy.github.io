@@ -27,7 +27,25 @@
       
       setTimeout(highlightCurrent, 60_000 - (now.getTime() % 60_000));
     }
-    addEventListener("DOMContentLoaded", highlightCurrent);
+    
+    function notify() {
+      let promise = Notification.requestPermission();
+      promise.then((permission) => {
+        console.log(permission);
+        switch (permission) {
+          case "granted":
+            new Notification("Test notification", { body: "success!" });
+            break;
+        }
+      });
+    }
+    
+    function loaded() {
+      document.getElementById("notify").addEventListener("click", notify);
+      highlightCurrent();
+    }
+    
+    addEventListener("DOMContentLoaded", loaded);
   </script>
 </head>
 
@@ -54,6 +72,8 @@
         </tr>
       </tbody>
     </table>
+    
+    <button id="notify">Remind me to move the car</button>
   </div>
 </body>
 </html>
