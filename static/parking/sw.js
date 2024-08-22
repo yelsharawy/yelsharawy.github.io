@@ -22,8 +22,8 @@ self.addEventListener("message", event => {
     });
 });
 
-self.registration.showNotification("Notification from service worker", { body: "success!" });
-messageAll("Sent notification");
+// self.registration.showNotification("Notification from service worker", { body: "success!" });
+// messageAll("Sent notification");
 
 self.addEventListener('install', event => {
     event.waitUntil(messageAll("install"));
