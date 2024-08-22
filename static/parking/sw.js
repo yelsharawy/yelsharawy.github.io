@@ -11,11 +11,23 @@ const messageAll = async (msg) => {
 console.log("Hello World!");
 
 messageAll("Hello World!");
+
+self.addEventListener("message", event => {
+    let notification = event.data;
+    self.registration.showNotification(
+        notification.title,
+        notification.options
+    ).catch((error) => {
+        console.log(error);
+    });
+});
+
 self.registration.showNotification("Notification from service worker", { body: "success!" });
 messageAll("Sent notification");
 
 self.addEventListener('install', event => {
     event.waitUntil(messageAll("install"));
+    event.waitUntil(self.registration.showNotification("Service worker installed", { body: "success!" }));
 });
 
 self.addEventListener('fetch', event => {
