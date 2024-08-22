@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" type="text/css" href="/style.css" />
   <title>Where do I park?</title>
   <script>
@@ -67,7 +68,7 @@
             log("Service worker active");
           }
           
-          const permission = await Notification.requestPermission();
+          const permission = Notification.permission;
           log(permission);
           if (permission == "granted") {
             registration.showNotification("Service notification", { body: "success!" });
