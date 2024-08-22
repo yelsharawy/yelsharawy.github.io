@@ -88,8 +88,7 @@
     };
     
     function loaded() {
-      // global
-      swRegistration = registerServiceWorker();
+      registerServiceWorker().then((ret) => swRegistration = ret);
       document.getElementById("notify").addEventListener("click", notify);
       highlightCurrent();
     }
