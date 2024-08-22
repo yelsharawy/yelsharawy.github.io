@@ -9,7 +9,10 @@ const messageAll = async (msg) => {
     }
 };
 console.log("Hello World!");
+
 messageAll("Hello World!");
+self.registration.showNotification("Notification from service worker", { body: "success!" });
+messageAll("Sent notification");
 
 self.addEventListener('install', event => {
     event.waitUntil(messageAll("install"));
