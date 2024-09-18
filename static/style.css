@@ -102,7 +102,7 @@ tr:nth-child(even) {
     background-color: var(--background-dim);
 }
 td {
-    padding: 1px 7px;
+    padding: 0.5em 1em;
     border: 1px solid var(--text-color-light);
 }
 
