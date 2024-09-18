@@ -14,5 +14,6 @@
         }
     ],
     "start_url": "https://yelsharawy.github.io/parking/",
-    "display": "standalone"
+    "display": "standalone",
+    "background_color": "hsl(212, 28%, 12%)"
 }
