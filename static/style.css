@@ -32,6 +32,12 @@ body {
     color: var(--text-color-normal);
 }
 
+.flex-col-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
 :is(h1, h2, h3, h4, h5, h6) {
     color: var(--text-color-richer);
 }
@@ -43,7 +49,6 @@ a {
 div.header {
     top: 0;
     position: sticky;
-    overflow: hidden;
     background-color: #335;
 }
 
@@ -57,7 +62,7 @@ nav a {
     display: inline-block;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 0.7em 1em;
     text-decoration: none;
     font-size: 17px;
 }
@@ -70,9 +75,16 @@ nav a.active {
     background-color: #557;
 }
 
-div.content {
+.content {
+    display: block;
     width: var(--content-width);
+    height: 100%;
     margin: 0 auto;
+    padding-bottom: 20pt;
+}
+
+.no-padding {
+    padding: 0pt;
 }
 
 table {
