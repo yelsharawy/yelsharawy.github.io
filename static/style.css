@@ -12,13 +12,13 @@ html {
 
 @media (prefers-color-scheme: dark) {
     html {
-        --background-normal: hsl(212, 28%, 12%);
-        --background-dim: hsl(213, 33%, 19%);
-        --background-dimmer: hsl(212, 29%, 27%);
+        --background-normal: hsl(213, 27%, 8%);
+        --background-dim: hsl(211, 36%, 15%);
+        --background-dimmer: hsl(212, 32%, 24%);
         --background-highlight: hsl(90, 34%, 23%);
-        --text-color-normal: hsl(210, 15%, 76%);
-        --text-color-light: hsl(210, 15%, 35%);
-        --text-color-richer: hsl(210, 50%, 72%);
+        --text-color-normal: hsl(213, 16%, 86%);
+        --text-color-light: hsl(210, 11%, 55%);
+        --text-color-richer: hsl(246, 76%, 84%);
         --text-color-highlight: hsl(25, 61%, 61%);
     }
 }
@@ -49,7 +49,7 @@ a {
 div.header {
     top: 0;
     position: sticky;
-    background-color: #335;
+    background-color: rgb(33, 33, 63);
 }
 
 nav {
@@ -65,14 +65,17 @@ nav a {
     padding: 0.7em 1em;
     text-decoration: none;
     font-size: 17px;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 nav a:hover {
-    background-color: #446;
+    background-color: rgb(53, 53, 94);
 }
 
 nav a.active {
-    background-color: #557;
+    background-color: rgb(80, 80, 134);
+    box-shadow: 0px -2pt inset white;
 }
 
 .content {
@@ -100,6 +103,10 @@ thead td {
 }
 tr:nth-child(even) {
     background-color: var(--background-dim);
+}
+/* Cells that span multiple rows should not be subject to alternating colors: */
+td[rowspan] {
+    background-color: var(--background-normal);
 }
 td {
     padding: 0.5em 1em;

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <title>Yusuf Elsharawy - Projects - On-Screen Calculator</title>
+</head>
+
+<body>
+  <div class="header">
+    <nav>
+      <a href="/">Home</a>
+      <a href="/projects">Projects</a>
+      <a href="/resume">Resume</a>
+    </nav>
+  </div>
+  <div class="content">
+    <h1>On-Screen Calculator - My First Project</h1>
+    <h2>Prelude</h2>
+    <p>
+      As the first project I can remember starting & finishing on my own, this deserves its own page. There's not much to talk about regarding the code or completed product (because it's lost on some old hard drive) so this will be about the beginning of my programming journey.
+    </p>
+    <h2>The Cursor - How I Learned to Think Critically about Technology</h2>
+    <p>
+      To 4-year-old me, and many learning to use a computer for the first time, the cursor seemed to have a sort of magical element to it. You move an object in the real world (or in my case, wiggle a <a href="https://en.wikipedia.org/wiki/Pointing_stick">rubber nub</a>), and an object on the screen moves in response, acting as a vessel for another world. You could use it to interact with things, and it would in turn tell you about the world - eg. "you can click here", "you can select text", "you have to wait" - by changing into different icons. In some programs like Paint, it transforms entirely, into a pencil, brush, or eraser. It seemed limitless in its abilities.
+    </p>
+    <p>
+      But for something so magical, it seemed to have strange, arbitrary rules. For example, no part of it could leave the top or left of the screen, but it had no problem almost completely hiding past the right or bottom edge. And if it just barely touched the bottom or right side of a hyperlink, it would be ready to click, but not so for the top or left - I can cover a lot of the link with the cursor before it switched icons.
+    </p>
+    <p>
+      With some time, I came to this conclusion: only a single pixel of the cursor <strong>"mattered"</strong>. The rest, whether a hand, hourglass, or paint brush, was there just for show.
+    </p>
+    <p>
+      I felt as if I had uncovered a small hidden truth behind the smoke & mirrors, that it wasn't so magical anymore. While it may discourage some to replace "magic" with understanding, I enjoyed the feeling. I started looking more closely at everything the computer did, particularly in videogames.
+    </p>
+    <h2>Toontown Glitches - Building Debugging Skills</h2>
+    <p>
+      <a href="https://en.wikipedia.org/wiki/Toontown_Online">Disney's Toontown Online</a> was a large part of my childhood, and while I enjoyed the game itself, I loved playing with glitches even more. Realizations about how the game worked came in pairs with the glitches I learned about:
+    </p>
+    <table id="timetable" style="max-width: 75%;">
+      <thead>
+        <td>Glitch</td>
+        <td>Realization</td>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Underwater music continues to play when quitting to menu.</td>
+          <td>The game must think I'm still underwater.</td>
+        </tr>
+        <tr>
+          <td>Walking into a tight corner, the character shakes.</td>
+          <td>Both walls try to push the character outwards, but sometimes into the other wall, back and forth.</td>
+        </tr>
+        <tr>
+          <td>In some places, you can squeeze out of bounds.</td>
+          <td>Combined with walking, an object's pushing can be enough to get past a wall.</td>
+        </tr>
+        <tr>
+          <td>Out of bounds, you can't jump. If you try, your character is stuck in the jumping animation until you get back in-bounds, <em>then</em> your character jumps.</td>
+          <td>There's no actual ground out of bounds, and the game doesn't let you jump unless there's ground below you.</td>
+        </tr>
+        <tr>
+          <td>If you try teleporting at the same moment you enter the water on a slope, you can fly.</td>
+          <td>Entering the water cancels the teleportation, then the game is stuck thinking you're on a slope, so you can walk forwards into the sky, or backwards down to the ground.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      If I thought harder about certain explanations, I uncovered even deeper truths. For example, if you got the underwater music stuck playing by going to the menu, it didn't go away when you started playing again, or even when you entered/exited the water again. In fact, it would start playing <em>again</em>, on top of the music already playing. So it's not quite that the game still thinks you're underwater, but that the game just "forgot" to turn it off the music the first time.
+    </p>
+    <p>
+      As another example, why would walls pushing into each other cause <em>shaking</em>? It must be that the game runs one "moment" at a time. At one "moment", only one wall pushes me, then in the next "moment", the other wall pushes me back. Only later I would learn the word "frame" to replace "moment".
+    </p>
+    <p>
+      But this wasn't enough for me. How can a game "forget" to do something? How can a wall "try" to push the character? Why do games only run one "moment" at a time? What does it even mean for a game to "think" something? While I didn't know it yet, I was already learning valuable debugging skills - simply asking "why?" gets you most of the way there.
+    </p>
+    <p>
+      Of course, with zero programming knowlegde, questions & experiments could only get me so far, but I needed to know more. So, at eight years old, I asked my dad one simple question: "how are games made?"
+    </p>
+    <h2>VB.NET - My First Language</h2>
+    <p>
+      My dad, the IT guy, didn't know much about making games. But he did know <a href="https://en.wikipedia.org/wiki/VBScript">VBScript</a>, and he knew you could make actual applications with <a href="https://en.wikipedia.org/wiki/Visual_Basic_(.NET)">VB.NET</a>. So what did he do? He gave me <a href="https://www.youtube.com/playlist?list=PL42055376AE25291E">this YouTube playlist</a> to follow on my own. It wasn't flashy, it wasn't easy, but it gave me somewhere to start. So with Microsoft Visual Studio 2008 and a playlist of tutorials, I started coding.
+    </p>
+    <p>
+      At first, I followed the tutorial guy step-by-step, to replicate the exact program in the video. I'd never heard of "variables" or "functions" before, but if I could follow along, I could make anything he makes. Eventually, through repitition, I learned how things work. Forms have controls. Forms and controls have properties and events. Properties change how the component looks/works. Events can be linked to functions. Functions can make decisions, change properties, and otherwise "make things happen". They can also use variables, which remember things for later. I might not have realized it at the time, but I was already becoming familiar with the basics of GUI programming, 10 years before I was taught it again in college. At some point, I felt confident enough to make my very own program, without guidance.
+    </p>
+    <h2>Finally, the calculator</h2>
+    <p>
+      I don't remember much about actually coding it, but I do distinctly remember thinking about it during class. I had finally gotten a solid grasp on control flow and loops, and my mind was racing with ideas. I could make the computer do any human task that I describe clearly enough. And I remember thinking, "some things are hard to describe - what about division? Maybe I could make the computer do long division the same way a human does, digit by digit. Yeah, I can do that!" It wasn't until I got home that I realized - VB.NET has a builtin division operator.<sup>1</sup>
+    </p>
+    <p>
+      But in the end, it worked. If I remember correctly, you could both type numbers using your keyboard, and enter them with the on-screen keypad. And while it struggled with big numbers and division by zero, there was a Help option in the toolbar that, conveniently, told you not to do those things. Even if it was rough around the edges, it proved to me that I was capable of making things, all I had to do was put my mind to it.
+    </p>
+    <hr>
+    <ol>
+      <li>
+        My pondering wasn't useless! I called upon that thinking years later when thinking about how to supass Java's integer limit by doing arithmetic on Strings. I didn't know it, but I had (albeit inefficiently) reinvented the <a href="https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html">BigInteger</a> class. Reinventing things without realizing is something I continue to do today.
+      </li>
+    </ol>
+  </div>
+</body>
+</html>
